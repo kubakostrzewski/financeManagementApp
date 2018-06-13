@@ -16,17 +16,33 @@
 
     <div class="center" id="login_content" >
 
-        <div class="card text-center">
-            <div class="card-header">
-                WITAJ W APLIKACJI FINANCE MANAGEMENT
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Obecnie jesteś wylogowany</h5>
-                <p class="card-text">Zaloguj się lub załóż konto aby skorzystać z aplikacji</p>
-                <a href="${pageContext.request.contextPath}/login" class="btn btn-success bg-success">Logowanie</a>
-                <a href="${pageContext.request.contextPath}/register" class="btn btn-success bg-success">Rejestracja</a>
-            </div>
-        </div>
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <div class="card text-center">
+                    <div class="card-header">
+                        WITAJ W APLIKACJI FINANCE MANAGEMENT
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Witaj ${sessionScope.user.username}!</h5>
+                        <p class="card-text"> Obecnie jesteś zalogowany i możesz korzystać z aplikacji :)</p>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="card text-center">
+                    <div class="card-header">
+                        WITAJ W APLIKACJI FINANCE MANAGEMENT
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Obecnie jesteś wylogowany</h5>
+                        <p class="card-text">Zaloguj się lub załóż konto aby skorzystać z aplikacji</p>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-success bg-success">Logowanie</a>
+                        <a href="${pageContext.request.contextPath}/register" class="btn btn-success bg-success">Rejestracja</a>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
 
     </div>
 

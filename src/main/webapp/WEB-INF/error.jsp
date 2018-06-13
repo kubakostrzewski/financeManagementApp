@@ -15,16 +15,17 @@
 <jsp:include page="FRAGMENTS/navbar.jspf"/>
 
 
-    <form class="form-signin center" action="j_security_check" method="post">
-        <h2 class="font-weight-normal">Logowanie</h2>
-        <div class="form-group">
-            <input name="j_username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nazwa użytkownika">
-        </div>
-        <div class="form-group">
-            <input name="j_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
-        </div>
-        <button type="submit" class="btn btn-primary">Zaloguj</button>
-    </form>
+<form class="form-signin center" action="j_security_check" method="post">
+    <h2 class="font-weight-normal">Logowanie</h2>
+    <div class="form-group">
+        <input name="j_username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nazwa użytkownika">
+    </div>
+    <div class="form-group">
+        <input name="j_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+        <small i="loginHelp" class="form-text" style="color:red">Podana nazwa użytkownika lub hasło niepoprawne!</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Zaloguj</button>
+</form>
 
 <jsp:include page="FRAGMENTS/footer.jspf"/>
 
