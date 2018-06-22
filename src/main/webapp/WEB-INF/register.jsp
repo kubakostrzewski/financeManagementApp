@@ -15,15 +15,27 @@
 <jsp:include page="FRAGMENTS/navbar.jspf"/>
 
 
-<form class="form-signin center">
+<form class="form-signin center" action="register" method="post">
     <h2 class="font-weight-normal">Rejestracja</h2>
     <div class="form-group">
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nazwa użytkownika">
+        <input name="inputName" type="text" class="form-control" aria-describedby="emailHelp"
+               placeholder="Nazwa użytkownika" value="${requestScope.name}" maxlength="45">
         <small id="nameHelp" class="form-text text-muted">Podaj swoją unikalną nazwę użytkownika</small>
+        <c:if test="${requestScope.duplicate == true}">
+            <small i="duplicatedNameHelp" class="form-text" style="color:red">Podana nazwa użytkownika już istnieje!</small>
+        </c:if>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Powtórz hasło">
+        <input name="inputPassword" type="password" class="form-control" id="exampleInputPassword"
+               placeholder="Hasło" maxlength="45">
+        <input name="inputPasswordConfirm" type="password" class="form-control" id="exampleInputPasswordConfirm"
+               placeholder="Powtórz hasło" maxlength="45">
+        <c:if test="${requestScope.passMatch == true}">
+            <small i="passwordMatchHelp" class="form-text" style="color:red">Podane hasła są różne!</small>
+        </c:if>
+        <c:if test="${requestScope.passTooShort == true}">
+            <small i="passwordTooShortHelp" class="form-text" style="color:red">Hasło musi mieć minimum 6 znaków!</small>
+        </c:if>
     </div>
     <button type="submit" class="btn btn-primary">Zarejestruj</button>
 </form>

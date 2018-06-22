@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Resource
-            name="jdbc/weekop"
+            name="jdbc/financemanagement"
             auth="Container"
             type="javax.sql.DataSource"
             initialSize="10"
@@ -11,16 +11,15 @@
             username="root"
             password="root"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/weekop" />
+            url="jdbc:mysql://localhost:3306/financemanagement" />
 
     <Realm
             className="org.apache.catalina.realm.DataSourceRealm"
-            dataSourceName="jdbc/weekop"
+            dataSourceName="jdbc/financemanagement"
             userTable="user"
             userNameCol="username"
             userCredCol="password"
             userRoleTable="user_role"
             roleNameCol="role_name"
-            localDataSource="true"
-            digest="MD5"/>
+            localDataSource="true"/>
 </Context>

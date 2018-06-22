@@ -10,21 +10,24 @@
     <jsp:include page="FRAGMENTS/stylesHead.jspf"/>
     <title>Finance Management App</title>
 </head>
-<body class="text-center">
+<body>
 
 <jsp:include page="FRAGMENTS/navbar.jspf"/>
 
+<div class="center" id="login_content" >
 
-    <form class="form-signin center" action="j_security_check" method="post">
-        <h2 class="font-weight-normal">Logowanie</h2>
-        <div class="form-group">
-            <input name="j_username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nazwa użytkownika">
+    <div class="card text-center">
+        <div class="card-header">
+            WITAJ W APLIKACJI FINANCE MANAGEMENT
         </div>
-        <div class="form-group">
-            <input name="j_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+        <div class="card-body">
+            <h5 class="card-title">Rejestracja zakończona sukcesem!</h5>
+            <p class="card-text">Teraz możesz się zalogować</p>
+            <a href="${pageContext.request.contextPath}/login" class="btn btn-success bg-success">Logowanie</a>
         </div>
-        <button type="submit" class="btn btn-primary">Zaloguj</button>
-    </form>
+    </div>
+
+</div>
 
 <jsp:include page="FRAGMENTS/footer.jspf"/>
 
