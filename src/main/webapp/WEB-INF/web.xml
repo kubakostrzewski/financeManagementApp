@@ -11,6 +11,11 @@
       <web-resource-name>Auth</web-resource-name>
       <description>Resources that can be accessed after login</description>
       <url-pattern>/myAccount</url-pattern>
+      <url-pattern>/addExpense</url-pattern>
+      <url-pattern>/deleteExpense</url-pattern>
+      <url-pattern>/editExpense</url-pattern>
+      <url-pattern>/expenseList</url-pattern>
+      <url-pattern>/logout</url-pattern>
       <url-pattern>/login</url-pattern>
       <http-method>GET</http-method>
       <http-method>POST</http-method>
@@ -33,6 +38,24 @@
       <form-error-page>/WEB-INF/error.jsp</form-error-page>
     </form-login-config>
   </login-config>
+
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>filter.LoginFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>AccessFilter</filter-name>
+    <filter-class>filter.AccessFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AccessFilter</filter-name>
+    <url-pattern>/editExpense</url-pattern>
+  </filter-mapping>
 
   <jsp-config>
     <jsp-property-group>

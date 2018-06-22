@@ -22,27 +22,22 @@ public class UserDAO {
     private final String GET_USER_BY_USERNAME = "SELECT * FROM user WHERE username = :username";
 
     private final String SET_PRIVIGILES = "INSERT INTO user_role (username)VALUES (:username)";
+
     private NamedParameterJdbcTemplate template;
 
     public UserDAO() {
         template = new NamedParameterJdbcTemplate(ConnectionProvider.getDataSource());
     }
 
-    public long create(User user){
+    public void create(User user){
 
         User resultUser = new User(user);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        Map<String, Object> parameterMap = new HashMap<>();
-        parameterMap.put("username", user.getUsername());
-        parameterMap.put("password", user.getPassword());
-        parameterMap.put("email", user.getEmail());
-        parameterMap.put("question",user.getQuestion());
-        SqlParameterSource parameterSource = new MapSqlParameterSource(parameterMap);
+        SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(user);
         int update = template.update(CREATE, parameterSource, keyHolder);
         if (update > 0){
             setPrivigiles(user);
         }
-        return (long)keyHolder.getKey();
     }
     public User getUserByUsername(String username){
 

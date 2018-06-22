@@ -1,32 +1,43 @@
 package model;
 
-import javax.print.attribute.standard.DateTimeAtProcessing;
 import java.sql.Date;
 
 public class Expense {
 
-    private int id;
+    private int expenseId;
+    private String name;
     private double value;
     private String type;
-    private String remark;
+    private String description;
     private Date date;
     private int userId;
 
-    public Expense(int id, double value, String type, String remark, Date date, int userId) {
-        this.id = id;
+    public Expense() {
+    }
+
+    public Expense(String name, double value, String type, String description, Date date, int userId) {
+        this.name = name;
         this.value = value;
         this.type = type;
-        this.remark = remark;
+        this.description = description;
         this.date = date;
         this.userId = userId;
     }
 
-    public int getId() {
-        return id;
+    public int getExpenseId() {
+        return expenseId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setExpenseId(int id) {
+        this.expenseId = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getValue() {
@@ -45,12 +56,12 @@ public class Expense {
         this.type = type;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getDate() {

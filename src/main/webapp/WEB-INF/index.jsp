@@ -25,6 +25,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Witaj ${sessionScope.user.username}!</h5>
                         <p class="card-text"> Obecnie jesteś zalogowany i możesz korzystać z aplikacji :)</p>
+                        <a href="${pageContext.request.contextPath}/addExpense" class="btn btn-success bg-success">
+                            <i class="fas fa-plus"></i>
+                            Dodaj nowy wydatek
+                        </a>
+                        <a href="${pageContext.request.contextPath}/expenseList" class="btn btn-success bg-success">
+                            <i class="fas fa-list-ul"></i>
+                            Lista wydatków
+                        </a>
                     </div>
                 </div>
             </c:when>
