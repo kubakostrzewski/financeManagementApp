@@ -55,6 +55,7 @@
   <filter-mapping>
     <filter-name>AccessFilter</filter-name>
     <url-pattern>/editExpense</url-pattern>
+    <url-pattern>/deleteExpense</url-pattern>
   </filter-mapping>
 
   <jsp-config>

@@ -24,6 +24,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Data</th>
                 <th class="w-50" scope="col">Nazwa wydatku</th>
+                <th scope="col">Typ</th>
                 <th scope="col">Kwota [PLN]</th>
                 <th scope="col"></th>
             </tr>
@@ -36,6 +37,7 @@
                     <th scope="row">${loop.index + 1}</th>
                     <td>${expense.date}</td>
                     <td>${expense.name}</td>
+                    <td>${expense.type}</td>
                     <td>
                         <c:choose>
                             <c:when test="${expense.value*100%10 eq 0}">
@@ -51,7 +53,10 @@
                 </tbody>
                 <tbody id="group-of-rows-${loop.index}" class="collapse">
                 <tr>
-                    <td colspan="4">${expense.description}</td>
+                    <td colspan="5">
+                        <strong>Opis:</strong>
+                            <br>${expense.description}
+                    </td>
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="btn-group-vertical" role="group" aria-label="Basic example">
@@ -60,7 +65,7 @@
                                     <i class="far fa-edit"></i>
                                     Edytuj
                                 </a>
-                                <a href="${pageContext.request.contextPath}/deleteExpense?delExpId=${expense.expenseId}"
+                                <a href="${pageContext.request.contextPath}/deleteExpense?expId=${expense.expenseId}"
                                    class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                     Usuń
