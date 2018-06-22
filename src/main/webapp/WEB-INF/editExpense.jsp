@@ -28,10 +28,38 @@
             <label>Typ wydatku</label>
             <select name="inputType" class="form-control">
                 <option>Wyżywienie</option>
-                <option>Mieszkanie</option>
-                <option>Samochód</option>
-                <option>Bilety</option>
-                <option>Inne</option>
+                <c:choose>
+                    <c:when test="${expense.type} == 'Mieszkanie'">
+                        <option selected>Mieszkanie</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option>Mieszkanie</option>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${expense.type == 'Samochód'}">
+                        <option selected>Samochód</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option>Samochód</option>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${expense.type == 'Bilety'}">
+                        <option selected>Bilety</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option>Bilety</option>
+                    </c:otherwise>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${expense.type == 'Inne'}">
+                        <option selected>Inne</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option>Inne</option>
+                    </c:otherwise>
+                </c:choose>
             </select>
         </div>
         <div class="form-group">

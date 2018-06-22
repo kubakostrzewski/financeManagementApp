@@ -31,6 +31,7 @@ public class EditExpenseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         ExpenseService expenseService = new ExpenseService();
         try {
             String expenseToEditId = req.getParameter("expId");

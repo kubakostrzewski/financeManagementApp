@@ -18,23 +18,11 @@ public class DeleteExpenseController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService userService = new UserService();
-        ExpenseService expenseService = new ExpenseService();
 
-        String activeUserName = req.getUserPrincipal().getName();
-        User activeUser = userService.getUser(activeUserName);
-        int expenseToDeleteId = Integer.parseInt(req.getParameter("delExpId"));
-        try {
-            Expense expenseToDelete = expenseService.getExpense(expenseToDeleteId);
-            if (activeUser.getId() == expenseToDelete.getUserId()){
-                expenseService.deleteExpense(expenseToDeleteId);
-                resp.sendRedirect("expenseList");
-            }else {
-                resp.sendError(403);
-            }
-        }catch (EmptyResultDataAccessException e){
-            resp.sendError(400);
-        }
+        ExpenseService expenseService = new ExpenseService();
+        int expenseToDeleteId = Integer.parseInt(req.getParameter("expId"));
+        expenseService.deleteExpense(expenseToDeleteId);
+        resp.sendRedirect("expenseList");
 
     }
 }
